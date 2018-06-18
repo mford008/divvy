@@ -1,0 +1,15 @@
+/*navbar*/
+
+/*jumbotron*/
+.jumbotron {
+  margin-bottom: 0px;
+  background-image: url("./assets/static/gardening_tools.jpg");
+  background-position: 0% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+/*footer*/
+h1.copyright {
+  font-size: 20px;
+}
