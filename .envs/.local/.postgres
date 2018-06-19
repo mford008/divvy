@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=divvy
+POSTGRES_USER=WoUJfVRHzERlmxJDrBFGJnwaGbNpsItn
+POSTGRES_PASSWORD=Qh58Oh5kM2A9GTZoxoJJBfYYwk3xqtm9fEo6DilBLfAI7fjuh7mpBBunrcjnDqaj
