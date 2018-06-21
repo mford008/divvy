@@ -237,4 +237,4 @@ SOCIALACCOUNT_ADAPTER = 'divvy.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
