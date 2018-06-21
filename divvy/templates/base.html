@@ -16,7 +16,7 @@
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 
     {% block css %}
-
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
 
@@ -42,9 +42,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">About</a>
             </li>
@@ -52,10 +49,10 @@
               <a class="nav-link" href="{% url 'invite' %}">Invite</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'browse' %}">Browse Items</a>
+              <a class="nav-link" href="{% url 'browse' %}">Browse</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'post' %}">Post an Item</a>
+              <a class="nav-link" href="{% url 'post' %}">Share</a>
             </li>
 
             {% if request.user.is_authenticated %}
