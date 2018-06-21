@@ -235,6 +235,6 @@ ACCOUNT_ADAPTER = 'divvy.users.adapters.AccountAdapter'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = 'divvy.users.adapters.SocialAccountAdapter'
 
-
 # Your stuff...
 # ------------------------------------------------------------------------------
+# django_heroku.settings(locals())
