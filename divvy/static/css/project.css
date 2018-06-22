@@ -19,10 +19,11 @@ h2 {
 .jumbotron {
   margin-bottom: 0px;
   background-image: url("../../static/images/");
-  background-position: 0% 25%;
+  background-position: 0% 10%;
   background-size: cover;
   background-repeat: no-repeat;
   color: black;
+  text-align: center;
 }
 /*invite*/
 p, .form-container {
@@ -52,10 +53,11 @@ h1.copyright {
   width: 50 px;
 }
 
-.btn.btn-primary {
+p.lead {
+
 }
 
-div.centerbutton {
+a.btn.btn-primary.btn-lg {
   text-align: center;
 }
 
