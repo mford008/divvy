@@ -42,6 +42,9 @@ h2.card-title {
 img.card-img-top {
   max-height: 250px;
 }
+.card {
+  margin: 10px;
+}
 /*footer*/
 h1.copyright {
   font-size: 20px;
