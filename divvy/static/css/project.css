@@ -17,8 +17,9 @@ h2 {
 }
 /*jumbotron*/
 .jumbotron {
+  width: 100%;
   margin-bottom: 0px;
-  background-image: url("../../static/images/");
+  background-image: url("../../static/images/Homepage_Image.jpg");
   background-position: 0% 10%;
   background-size: cover;
   background-repeat: no-repeat;
