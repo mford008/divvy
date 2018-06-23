@@ -1,15 +1,49 @@
-{% extends "base.html" %}
+{% extends "base-index.html" %}
 
 {% block content %}
-<!-- <div class="container"> -->
+
 <div class="jumbotron">
-  <h1 class="display-4">Divvy!</h1>
-  <p class="lead">Finally, a sharing app that you'll actually use.</p>
+  <img src="../../static/images/Divvy_Logo_Picture.jpeg" alt="divvy logo" height="75" width="75">
+  <h1 class="display-4" style="font-weight: bold;">Divvy</h1>
+  <p class="lead">Sharing. Efficiently.</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p>A better way to share with your neighbors and friends.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/accounts/signup/" role="button">Sign Up</a>
+    <a class="btn btn-lg signup" href="/accounts/signup/" role="button">Sign Up</a>&nbsp
+    <a id="signin" class="btn btn-lg signin" href="/accounts/login/" role="button">Sign In</a>
   </p>
 </div>
-<!-- </div> -->
+<br><br>
+<div class="container diagram">
+<div class="row">
+<!-- Signup -->
+  <div class="col col-pic">
+    <div class="diagram-step" style="text-align: center;">
+      <i class="fa fa-mobile"></i>
+      <h2>Signup</h2>
+    </div>
+  </div>
+<!-- Post -->
+  <div class="col col-pic">
+    <div class="diagram-step" style="text-align: center;">
+      <i class="fa fa-plus"></i>
+      <h2>Post your stuff</h2>
+    </div>
+  </div>
+<!-- Browse -->
+  <div class="col col-pic">
+    <div class="diagram-step" style="text-align: center;">
+      <i class="fa fa-shopping-basket"></i>
+      <h2>Browse inventory</h2>
+    </div>
+  </div>
+<!-- Share -->
+  <div class="col col-pic">
+    <div class="diagram-step" style="text-align: center;">
+      <i class="fa fa-share"></i>
+      <h2>Share and Return</h2>
+    </div>
+  </div>
+</div>
+</div>
 {% endblock content %}
