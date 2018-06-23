@@ -15,9 +15,8 @@ h2 {
   color: white;
   border-color: #76d695;
 }
-/*jumbotron*/
+/*index*/
 .jumbotron {
-  /*width: 100%;*/
   padding: 0;
   margin-bottom: 0px;
   background-image: url("../../static/images/Homepage_Image.jpg");
@@ -27,6 +26,10 @@ h2 {
   color: black;
   text-align: center;
 }
+div.diagram-step {
+  text-align: center;
+}
+
 /*invite*/
 p, .form-container {
   display: flex;
@@ -52,31 +55,6 @@ img.card-img-top {
 h1.copyright {
   font-size: 20px;
 }
-
-/*h1.display-4 {
-  text-align: center;
-  width: 50 px;
-}
-
-p.lead {
-
-}
-
-a.btn.btn-primary.btn-lg {
-  text-align: center;
-}
-
-.alert-debug {
-  color: black;
-  background-color: white;
-  border-color: #d6e9c6;
-}*/
-
-/*.alert-error {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
-}*/
 
 /*browse*/
 .gallery-block{
