@@ -15,6 +15,11 @@ h2 {
   color: white;
   border-color: #76d695;
 }
+a#signin {
+  background-color: white;
+  color: #76d695;
+  border-color: #76d695;
+}
 /*index*/
 .jumbotron {
   padding: 0;
