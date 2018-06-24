@@ -12,17 +12,23 @@ from .models import ShareItem
 # these two forms are templated from the Twitten activity, we might not need them
 class NewItemForm(forms.ModelForm):
     class Meta:
-        model = Item
-        fields = ['name', 'owner', 'availability', 'timeframe']
+        model = ShareItem
+        fields = ['name', 'owner', 'availability', 'timeframe', 'image']
+
 
 
 class EditItemForm(forms.ModelForm):
     class Meta:
-        model = Item
-        fields = ['name', 'availability', 'timeframe']
+        model = ShareItem
+        fields = ['name', 'availability', 'timeframe', 'image']
 
 
-def user_page(request):
+
+def user_page(request, username):
+
+    user = User.objects.get(username=username)    
+    
+    #CREATE item listing
     if request.method == 'POST':
 
         # i think we need to replace these forms with the ones CC made for us
@@ -30,19 +36,30 @@ def user_page(request):
         form = NewItemForm(request.POST)
 
         if form.is_valid():
-            item = form.save()
+            item = form.save(commit=False)
+            item.user = request.user
+            item.save()
 
-            auth.login(request, user)
-            return redirect('/')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
 
     else:
+        #if a GET request, give them a blank form?
         form = NewItemForm()
-
+    
+    #READ all items that this user has posted
+    items = ShareItem.objects.order_by('-created')
+    items_by_user = items.filter(user=user)
+    
     context = {
-        'form': form,
+        'items': items_by_user, #this needs to be inserted into html like: {{ items }}
+        'form': form,           #but make it into a for loop? with the tiles like on browse.html
+        'user_on_page': user,
+        'is_me': user == request.user,
     }
+    
     # this return might be in the wrong spot
     return render(request, 'pages/user_detail.html', context)
+
 
 
 def browse_page(request):
@@ -58,9 +75,11 @@ def browse_page(request):
                 'is_me': user == request.user,
             }
             return render(request, 'pages/browse.html', context)
+            
     else:
         #redirects to page where they came from
         return redirect(request.META.get('HTTP_REFERER', '/'))
+
 
 #this def should be okay, but we wont know till all the rest of the code is working
 def delete_item(request, item_id):
@@ -69,6 +88,8 @@ def delete_item(request, item_id):
 
     #redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
 
 def update_item(request, item_id):
     #this code is incomplete, ['fields'] needs to be changed
@@ -83,3 +104,8 @@ def update_item(request, item_id):
 
     #redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
+    
+    
+    
+    
+  
