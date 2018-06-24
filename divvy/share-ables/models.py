@@ -14,7 +14,9 @@ class ShareItem(models.Model):
         on_delete=models.CASCADE,
     )
 
-    image = models.FileField(upload_to='', null=True, blank=True)
+    
+    image = models.FileField(upload_to='item-images', null=True, blank=True)
+    
 
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)

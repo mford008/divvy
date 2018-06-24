@@ -5,7 +5,7 @@ from . import views
 app_name = "share-ables"
 urlpatterns = [
     path("", view=views.shareables, name=""),
-    
+    #we need to add new paths, but this can be done at the end when we have all of our views
 
 
 
