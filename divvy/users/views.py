@@ -1,10 +1,17 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
+from django import forms
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from django.shortcuts import render
 
 from .models import User
 from .models import ShareGroup
+
+
+class NewShareGroupForm(forms.ModelForm):
+    class Meta:
+        model = ShareGroup
+        fields = ['group_name', 'user']
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -47,13 +54,19 @@ class UserListView(LoginRequiredMixin, ListView):
 
 class UserGroupView(LoginRequiredMixin, ListView):
     model = ShareGroup
-    username = 'username'
 
-    #def view_all_groups(request, username):
-        #context = {
-            #'groups': groups,
-        #}
-        #return render(request, 'pages/all_groups.html', context)
+    def view_all_groups(request, username):
+        if request.method == 'POST':
+            form = NewShareGroupForm(request.POST)
+            if form.is_valid():
+                group = form.save()
+        else:
+            form = NewShareGroupForm()
+
+        context = {
+            'groups': form,
+        }
+        return render(request, 'pages/all_groups.html', context)
 
     #def update_groups(request, group_id):
         #new_group = request.POST['group']
