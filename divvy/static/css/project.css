@@ -1,15 +1,32 @@
 /* These styles are generated from project.scss. */
 
 /*general*/
-h1 {
+h1, h2 {
   color: #1f3a6d;
 }
 h2 {
   font-size: 20px;
 }
-.heading {
+
+.heading, .subheading {
   text-align: center;
 }
+h2.subheading {
+  font-size: 45px;
+  color: #1f3a6d;
+}
+i.fa {
+  color: #76d695;
+  font-size: 3rem;
+  margin: 15px;
+}
+i.fas {
+  color: #f5eda1;
+  font-size: 3rem;
+  margin: 15px;
+}
+
+
 .btn {
   background-color: #76d695;
   color: white;
