@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 
 from .models import User
+from .models import ShareGroup
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
