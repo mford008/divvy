@@ -27,7 +27,6 @@ i.fas {
   margin: 15px;
 }
 
-
 .btn {
   background-color: #76d695;
   color: white;
@@ -42,12 +41,33 @@ a#signin {
 .jumbotron {
   padding: 0;
   margin-bottom: 0px;
-  background-image: url("../../static/images/Homepage_Image.jpg");
+  background-image: url("/static/images/Homepage_Image.jpg");
   background-position: 0% 10%;
   background-size: cover;
   background-repeat: no-repeat;
   color: black;
   text-align: center;
+}
+
+.browsingpage-background-image {
+  background-image: url("/static/images/barn-images2.jpg");
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sign-up-page-background-image {
+  background-image: url("/static/images/adult-carpet-chair2.jpg");
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.invitation-background-image {
+  background-image: url("/static/images/friends-on-phones2.jpg");
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 div.diagram-step {
