@@ -54,19 +54,22 @@ class UserListView(LoginRequiredMixin, ListView):
 
 class UserGroupView(LoginRequiredMixin, ListView):
     model = ShareGroup
+    slug_field = "username"
+    slug_url_kwarg = "username"
 
-    def view_all_groups(request, username):
-        if request.method == 'POST':
-            form = NewShareGroupForm(request.POST)
-            if form.is_valid():
-                group = form.save()
-        else:
-            form = NewShareGroupForm()
 
-        context = {
-            'groups': form,
-        }
-        return render(request, 'pages/all_groups.html', context)
+def view_all_groups(request, username):
+    if request.method == 'POST':
+        form = NewShareGroupForm(request.POST)
+        if form.is_valid():
+            group = form.save()
+    else:
+        form = NewShareGroupForm()
+
+    context = {
+        'groups': form,
+    }
+    return render(request, 'pages/invitation.html', context)
 
     #def update_groups(request, group_id):
         #new_group = request.POST['group']
