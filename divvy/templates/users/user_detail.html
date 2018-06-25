@@ -13,6 +13,39 @@
       {% if object.name %}
         <p>{{ object.name }}</p>
       {% endif %}
+      
+      <h2>My Share-able Items</h2>
+      <!--
+      {% for item in items %}
+        <p>{{ item }}</p>
+      {% endfor %}
+      -->
+      
+      <div class="container form-container">
+        <div class="col-md-5">
+            <div class="form-area">
+                <form role="form">
+                <h1 style="margin-bottom: 25px; text-align: center;">Upload an Item!</h1>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="item name" placeholder="Item Name" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" type="textarea" id="message" placeholder="Item Description" maxlength="140" rows="7"></textarea>
+                <span class="help-block"><p id="characterLeft" class="help-block "></p></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="availability" name="availability" placeholder="Availability" required>
+            </div>
+                <div class="controls">
+                    <button class="btn" type="button" id="submit" name="submit" class="btn btn-primary pull-right">Upload Picture</button>
+                    <button class="btn" type="button" id="submit" name="submit" class="btn btn-primary pull-right">Upload Item</button>
+                </div>
+                </form>
+            </div>
+        </div>
+      </div>
+      
+       
     </div>
   </div>
 

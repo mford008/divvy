@@ -1,30 +1,58 @@
 /* These styles are generated from project.scss. */
 
 /*general*/
-h1 {
+h1, h2 {
   color: #1f3a6d;
 }
 h2 {
   font-size: 20px;
 }
-.heading {
+
+.heading, .subheading {
   text-align: center;
 }
+h2.subheading {
+  font-size: 45px;
+  color: #1f3a6d;
+}
+i.fa {
+  color: #76d695;
+  font-size: 3rem;
+  margin: 15px;
+}
+i.fas {
+  color: #f5eda1;
+  font-size: 3rem;
+  margin: 15px;
+}
+
+
 .btn {
   background-color: #76d695;
   color: white;
   border-color: #76d695;
 }
-/*jumbotron*/
+a#signin {
+  background-color: white;
+  color: #76d695;
+  border-color: #76d695;
+}
+/*index*/
 .jumbotron {
+  padding: 0;
   margin-bottom: 0px;
-  background-image: url("../../static/images/");
+  background-image: url("../../static/images/Homepage_Image.jpg");
   background-position: 0% 10%;
   background-size: cover;
   background-repeat: no-repeat;
   color: black;
   text-align: center;
 }
+
+div.diagram-step {
+  text-align: center;
+}
+
 /*invite*/
 p, .form-container {
   display: flex;
@@ -43,35 +71,13 @@ h2.card-title {
 img.card-img-top {
   max-height: 250px;
 }
+.card {
+  margin: 10px;
+}
 /*footer*/
 h1.copyright {
   font-size: 20px;
 }
-
-/*h1.display-4 {
-  text-align: center;
-  width: 50 px;
-}
-
-p.lead {
-
-}
-
-a.btn.btn-primary.btn-lg {
-  text-align: center;
-}
-
-.alert-debug {
-  color: black;
-  background-color: white;
-  border-color: #d6e9c6;
-}*/
-
-/*.alert-error {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
-}*/
 
 /*browse*/
 .gallery-block{
