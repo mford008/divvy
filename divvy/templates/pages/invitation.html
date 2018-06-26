@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container form-container">
-  <div class="col-md-5">
-    <div class="form-area">
-      <form role="form">
-         <h1>Invite Someone to Divvy!</h1>
-           <div class="form-group">
-             <input type="text" class="form-control" id="name" name="item name" placeholder="First Name" required>
-           </div>
-           <div class="form-group">
-             <input type="text" class="form-control" id="email" name="email" placeholder="jdoe@jdoe.com" required>
-           </div>
-           <div class="form-group">
-             <textarea class="form-control" type="textarea" id="message" placeholder="Add your message here" maxlength="140" rows="7"></textarea>
-             <span class="help-block"><p id="characterLeft" class="help-block "></p></span>
-           </div>
-        <p><button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Send invite!</button></p>
-      </form>
+<div class="invitation-background-image">
+  <div class="container form-container">
+    <div class="col-md-5">
+      <div class="form-area">
+        <form role="form">
+           <h1>Invite a friend to Divvy!</h1>
+             <div class="form-group">
+               <input type="text" class="form-control" id="name" name="item name" placeholder="First Name" required>
+             </div>
+             <div class="form-group">
+               <input type="text" class="form-control" id="email" name="email" placeholder="jdoe@jdoe.com" required>
+             </div>
+             <div class="form-group">
+               <textarea class="form-control" type="textarea" id="message" placeholder="Add your message here" maxlength="140" rows="7"></textarea>
+               <span class="help-block"><p id="characterLeft" class="help-block "></p></span>
+             </div>
+          <p><button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Send invite!</button></p>
+        </form>
+      </div>
     </div>
   </div>
 </div>
