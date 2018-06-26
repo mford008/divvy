@@ -16,18 +16,14 @@ class NewItemForm(forms.ModelForm):
         fields = ['name', 'owner', 'availability', 'timeframe', 'image']
 
 
-
 class EditItemForm(forms.ModelForm):
     class Meta:
         model = ShareItem
         fields = ['name', 'availability', 'timeframe', 'image']
 
 
-
 def user_page(request, username):
-
-    user = User.objects.get(username=username)    
-    
+    user = User.objects.get(username=username)
     #CREATE item listing
     if request.method == 'POST':
 
@@ -45,18 +41,18 @@ def user_page(request, username):
     else:
         #if a GET request, give them a blank form?
         form = NewItemForm()
-    
+
     #READ all items that this user has posted
     items = ShareItem.objects.order_by('-created')
     items_by_user = items.filter(user=user)
-    
+
     context = {
         'items': items_by_user, #this needs to be inserted into html like: {{ items }}
         'form': form,           #but make it into a for loop? with the tiles like on browse.html
         'user_on_page': user,
         'is_me': user == request.user,
     }
-    
+
     # this return might be in the wrong spot
     return render(request, 'pages/user_detail.html', context)
 
@@ -75,7 +71,7 @@ def browse_page(request):
                 'is_me': user == request.user,
             }
             return render(request, 'pages/browse.html', context)
-            
+
     else:
         #redirects to page where they came from
         return redirect(request.META.get('HTTP_REFERER', '/'))
@@ -104,8 +100,3 @@ def update_item(request, item_id):
 
     #redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
-    
-    
-    
-    
-  
