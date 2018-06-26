@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 
-app_name = "share-ables"
+app_name = "share_ables"
 urlpatterns = [
     path("user_page", view=views.user_page, name="myprofile"),
     path("browse_page", view=views.browse_page, name="browse"),

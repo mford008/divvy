@@ -10,16 +10,16 @@ from .models import ShareItem
 
 
 # these two forms are templated from the Twitten activity, we might not need them
-class NewItemForm(forms.ModelForm):
-    class Meta:
-        model = ShareItem
-        fields = ['name', 'owner', 'availability', 'timeframe', 'image']
+# class NewItemForm(forms.ModelForm):
+#     class Meta:
+#         model = ShareItem
+#         fields = ['name', 'owner', 'availability', 'timeframe', 'image']
 
 
-class EditItemForm(forms.ModelForm):
-    class Meta:
-        model = ShareItem
-        fields = ['name', 'availability', 'timeframe', 'image']
+# class EditItemForm(forms.ModelForm):
+#     class Meta:
+#         model = ShareItem
+#         fields = ['name', 'availability', 'timeframe', 'image']
 
 
 def user_page(request, username):
@@ -64,9 +64,9 @@ def browse_page(request):
 
         # i think this part is wrong, my goal is to authenticate the user/group
         # before displaying the items they are 'allowed' to see
-        if auth.login(request, user)
+        if auth.login(request, user):
             context = {
-                'share-ables': all_items,
+                'share_ables': all_items,
                 'user_on_page': user,
                 'is_me': user == request.user,
             }
@@ -100,3 +100,41 @@ def update_item(request, item_id):
 
     #redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+
+
+items = [
+    {
+        'id': 1,
+        'image_src': '/static/images/basketball.jpg',
+        'item_name': 'Basketball',
+        'owner': 'Liam',
+        'availability': 'Weekdays',
+        'suggested_borrowing_timeframe': 'Half a day',
+    },
+    {
+        'id': 2,
+        'image_src': '/static/images/moka_pot.jpg',
+        'item_name': 'Moka Pot',
+        'owner': 'Maddy',
+        'availability': 'Weekends',
+        'suggested_borrowing_timeframe': 'One day',
+    },
+    {
+        'id': 3,
+        'image_src': '/static/images/gloves.jpg',
+        'item_name': 'Gardening Gloves',
+        'owner': 'Tyler',
+        'availability': 'Thursday-Sunday',
+        'suggested_borrowing_timeframe': 'Two to three days',
+    },
+]
+
+
+def test_view(request):
+    context = {
+        'items': items,
+    }
+    return render(request, 'pages/browse_test_view.html', context)
+ 
