@@ -18,6 +18,3 @@ class ShareItem(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    
-    
-    
