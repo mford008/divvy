@@ -15,19 +15,22 @@
       {% endif %}
 
       <h2>My Share-able Items</h2>
-      <!--
-      {% for item in items %}
-        <p>{{ item }}</p>
-      {% endfor %}
-      -->
-      <div class="sharable-items-form">
-        
-      </div>
-      <div class="container form-container">
+      <form action="." method="POST">
+        {% csrf_token %}
+          {{ form.as_p }}
+        <button>Add Item</button>
+      </form>
+      {# <div class="sharable-items-form">#}
+
+      {# </div>#}
+
+
+      <!-- <div class="container form-container">
         <div class="col-md-5">
             <div class="form-area">
-                <form role="form">
-                <h1 style="margin-bottom: 25px; text-align: center;">Upload an Item!</h1>
+                <form role="form" action="." method="POST">#}
+                  {# {% csrf_token %}#}
+                {# <h1 style="margin-bottom: 25px; text-align: center;">Upload an Item!</h1>
             <div class="form-group">
                 <input type="text" class="form-control" id="name" name="item name" placeholder="Item Name" required>
             </div>
@@ -39,11 +42,11 @@
                 <input type="text" class="form-control" id="availability" name="availability" placeholder="Availability" required>
             </div>
                 <div class="controls">
-                    <button class="btn" type="button" id="submit" name="submit" class="btn btn-primary pull-right">Upload Picture</button>
-                    <button class="btn" type="button" id="submit" name="submit" class="btn btn-primary pull-right">Upload Item</button>
+                    <button class="btn" type="button" id="submit-picture" name="submit" class="btn btn-primary pull-right">Upload Picture</button>
+                    <button class="btn" type="button" id="submit-item" name="submit" class="btn btn-primary pull-right">Upload Item</button>
                 </div>
-                </form>
-            </div>
+              </form> #}
+            </div> -->
         </div>
       </div>
 
@@ -51,9 +54,9 @@
     </div>
   </div>
 
-{% if object == request.user %}
-<!-- Action buttons -->
-<div class="row">
+ {% if object == request.user %}
+<!--Action buttons -->
+{<div class="row">
 
   <div class="col-sm-12">
     <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
@@ -63,8 +66,8 @@
 
 </div>
 <!-- End Action buttons -->
-{% endif %}
+ {% endif %}
 
 
 </div>
-{% endblock content %}
+ {% endblock content %}
