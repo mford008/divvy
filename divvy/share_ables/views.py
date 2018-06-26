@@ -49,8 +49,9 @@ def user_page(request, username):
     context = {
         'items': items_by_user, #this needs to be inserted into html like: {{ items }}
         'form': form,           #but make it into a for loop? with the tiles like on browse.html
-        'user_on_page': user,
+        'user_on_page': "user",
         'is_me': user == request.user,
+        'username': "Liam",
     }
 
     # this return might be in the wrong spot

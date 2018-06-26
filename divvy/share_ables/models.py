@@ -14,6 +14,10 @@ class ShareItem(models.Model):
         on_delete=models.CASCADE,
     )
 
+<<<<<<< HEAD:divvy/share-ables/models.py
+    image = models.FileField(upload_to='item_images/', null=True, blank=True)
+
+=======
     image = models.FileField(upload_to='item-images', null=True, blank=True)
     
     item_name = models.CharField(max_length=40)
@@ -24,5 +28,6 @@ class ShareItem(models.Model):
     
     borrow_time = models.CharField(max_length=40)
     
+>>>>>>> 0d82ec841c4e80a84a5ebdb5eeb742b00115f598:divvy/share_ables/models.py
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
