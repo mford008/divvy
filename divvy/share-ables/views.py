@@ -13,13 +13,13 @@ from .models import ShareItem
 class NewItemForm(forms.ModelForm):
     class Meta:
         model = ShareItem
-        fields = ['name', 'owner', 'availability', 'timeframe', 'image']
+        fields = ['item_name', 'username', 'available', 'borrow_time', 'image']
 
 
 class EditItemForm(forms.ModelForm):
     class Meta:
         model = ShareItem
-        fields = ['name', 'availability', 'timeframe', 'image']
+        fields = ['item_name', 'available', 'borrow_time', 'image']
 
 
 def user_page(request, username):
@@ -29,7 +29,7 @@ def user_page(request, username):
 
         # i think we need to replace these forms with the ones CC made for us
         # i'm not sure how to go about doing that yet
-        form = NewItemForm(request.POST)
+        form = NewItemForm(request.POST, request.FILES)
 
         if form.is_valid():
             item = form.save(commit=False)
@@ -54,7 +54,7 @@ def user_page(request, username):
     }
 
     # this return might be in the wrong spot
-    return render(request, 'pages/user_detail.html', context)
+    return render(request, 'templates/users/user_detail.html', context)
 
 
 
