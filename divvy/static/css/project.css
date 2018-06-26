@@ -1,4 +1,8 @@
 /* These styles are generated from project.scss. */
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
 
 /*general*/
 h1, h2 {
