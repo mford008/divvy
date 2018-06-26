@@ -12,8 +12,9 @@ h2 {
   text-align: center;
 }
 h2.subheading {
-  font-size: 45px;
+  font-size: 35px;
   color: #1f3a6d;
+  font-weight: bold;
 }
 i.fa {
   color: #76d695;
@@ -26,7 +27,9 @@ i.fas {
   margin: 15px;
 }
 
+
 a#signup, a#signin:hover {
+
   background-color: #76d695;
   color: white;
   border-color: #76d695;
@@ -41,12 +44,33 @@ a#signin, a#signup:hover {
 .jumbotron {
   padding: 0;
   margin-bottom: 0px;
-  background-image: url("../../static/images/Homepage_Image.jpg");
+  background-image: url("/static/images/Homepage_Image.jpg");
   background-position: 0% 10%;
   background-size: cover;
   background-repeat: no-repeat;
   color: black;
   text-align: center;
+}
+
+.browsingpage-background-image {
+  background-image: url("/static/images/barn-images2.jpg");
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sign-up-page-background-image {
+  background-image: url("/static/images/adult-carpet-chair2.jpg");
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.invitation-background-image {
+  background-image: url("/static/images/friends-on-phones2.jpg");
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 div.diagram-step {
