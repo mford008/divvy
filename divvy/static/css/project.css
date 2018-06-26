@@ -27,12 +27,15 @@ i.fas {
   margin: 15px;
 }
 
-.btn {
+
+a#signup, a#signin:hover {
+
   background-color: #76d695;
   color: white;
   border-color: #76d695;
 }
-a#signin {
+
+a#signin, a#signup:hover {
   background-color: white;
   color: #76d695;
   border-color: #76d695;
