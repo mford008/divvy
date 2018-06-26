@@ -101,9 +101,6 @@ def update_item(request, item_id):
     #redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
-
-
-
 items = [
     {
         'id': 1,
@@ -130,7 +127,6 @@ items = [
         'suggested_borrowing_timeframe': 'Two to three days',
     },
 ]
-
 
 def test_view(request):
     context = {
