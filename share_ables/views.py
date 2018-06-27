@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 
 from .models import ShareItem
-
+import requests
 
 # these two forms are templated from the Twitten activity, we might not need them
 # class NewItemForm(forms.ModelForm):
@@ -134,3 +134,17 @@ def test_view(request):
     }
     return render(request, 'pages/browse_test_view.html', context)
  
+
+def send_email (request):
+    name = request.POST["name"]
+    email = request.POST["email"]
+    message = request.POST["message"]
+    requests.post("https://api.mailgun.net/v3/sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org/messages",
+        auth=("api", "a971960a2131273331c519e762e089a9-e44cc7c1-4e6ce274"),
+        data={"from": "Liam <Bill@ClintonFoundation.net>",
+              "to": ["liambeijing@gmail.com", "@sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org"],
+              "subject": "subject",
+              "text": "text"})
+
+
+    return redirect("/")
