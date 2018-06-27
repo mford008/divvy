@@ -7,19 +7,19 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 
 from .models import ShareItem
-
+import requests
 
 # these two forms are templated from the Twitten activity, we might not need them
-class NewItemForm(forms.ModelForm):
-    class Meta:
-        model = ShareItem
-        fields = ['item_name', 'username', 'available', 'borrow_time', 'image']
+# class NewItemForm(forms.ModelForm):
+#     class Meta:
+#         model = ShareItem
+#         fields = ['name', 'owner', 'availability', 'timeframe', 'image']
 
 
-class EditItemForm(forms.ModelForm):
-    class Meta:
-        model = ShareItem
-        fields = ['item_name', 'available', 'borrow_time', 'image']
+# class EditItemForm(forms.ModelForm):
+#     class Meta:
+#         model = ShareItem
+#         fields = ['name', 'availability', 'timeframe', 'image']
 
 
 def user_page(request, username):
@@ -29,7 +29,7 @@ def user_page(request, username):
 
         # i think we need to replace these forms with the ones CC made for us
         # i'm not sure how to go about doing that yet
-        form = NewItemForm(request.POST, request.FILES)
+        form = NewItemForm(request.POST)
 
         if form.is_valid():
             item = form.save(commit=False)
@@ -49,13 +49,12 @@ def user_page(request, username):
     context = {
         'items': items_by_user, #this needs to be inserted into html like: {{ items }}
         'form': form,           #but make it into a for loop? with the tiles like on browse.html
-        'user_on_page': "user",
+        'user_on_page': user,
         'is_me': user == request.user,
-        'username': "Liam",
     }
 
     # this return might be in the wrong spot
-    return render(request, 'templates/users/user_detail.html', context)
+    return render(request, 'pages/user_detail.html', context)
 
 
 
@@ -65,9 +64,9 @@ def browse_page(request):
 
         # i think this part is wrong, my goal is to authenticate the user/group
         # before displaying the items they are 'allowed' to see
-        if auth.login(request, user)
+        if auth.login(request, user):
             context = {
-                'share-ables': all_items,
+                'share_ables': all_items,
                 'user_on_page': user,
                 'is_me': user == request.user,
             }
@@ -101,3 +100,51 @@ def update_item(request, item_id):
 
     #redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
+items = [
+    {
+        'id': 1,
+        'image_src': '/static/images/basketball.jpg',
+        'item_name': 'Basketball',
+        'owner': 'Liam',
+        'availability': 'Weekdays',
+        'suggested_borrowing_timeframe': 'Half a day',
+    },
+    {
+        'id': 2,
+        'image_src': '/static/images/moka_pot.jpg',
+        'item_name': 'Moka Pot',
+        'owner': 'Maddy',
+        'availability': 'Weekends',
+        'suggested_borrowing_timeframe': 'One day',
+    },
+    {
+        'id': 3,
+        'image_src': '/static/images/gloves.jpg',
+        'item_name': 'Gardening Gloves',
+        'owner': 'Tyler',
+        'availability': 'Thursday-Sunday',
+        'suggested_borrowing_timeframe': 'Two to three days',
+    },
+]
+
+def test_view(request):
+    context = {
+        'items': items,
+    }
+    return render(request, 'pages/browse_test_view.html', context)
+ 
+
+def send_email (request):
+    name = request.POST["name"]
+    email = request.POST["email"]
+    message = request.POST["message"]
+    requests.post("https://api.mailgun.net/v3/sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org/messages",
+        auth=("api", "a971960a2131273331c519e762e089a9-e44cc7c1-4e6ce274"),
+        data={"from": "Liam <Bill@ClintonFoundation.net>",
+              "to": ["liambeijing@gmail.com", "@sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org"],
+              "subject": "subject",
+              "text": "text"})
+
+
+    return redirect("/")

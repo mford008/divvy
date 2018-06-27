@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="browsingpage-background-image">
+  <div class="container">
+    <div class="heading">
+      <h1 style="margin-top: 20px;font-weight: bold; ">Shared Stuff</h1>
+    </div>
+
+    <div class="row">
+      {% for item in items %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card transform-on-hover">
+          <a class="lightbox">
+            <img src="{{ item.image_src }}" alt="Card Image" class="card-img-top">
+          </a>
+          <div class="card-body">
+            <h2 class="card-title"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basketball_modal" href="#">{{ item.item_name }}</button></h2>
+            <p class="text-muted card-text">Belongs to: {{ item.owner }}. <br>Availability: {{ item.availability }}. <br>Suggested Borrowing Timeframe: {{ item.suggested_borrowing_timeframe }}.</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<form action="/send-email/" method="POST">
+    <input name="name" placeholder="Name">
+    <input name="email" type="email" placeholder="Email">
+    <textarea name="message">
+    </textarea>
+    <button type="submit">Submit</button>
+{% csrf_token %}
+</form>
+
+
+{% endblock content %}

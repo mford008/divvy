@@ -31,7 +31,6 @@ i.fas {
   margin: 15px;
 }
 
-
 a#signup, a#signin:hover {
 
   background-color: #76d695;
@@ -160,7 +159,7 @@ h1.copyright {
 
 @media (min-width: 576px) {
 
-	.gallery-block .transform-on-hover:hover {
+  .gallery-block .transform-on-hover:hover {
 	    transform: translateY(-10px) scale(1.02);
 	    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
 	}
