@@ -14,6 +14,15 @@
 	    <div class="modal-content">
 	      <div class="modal-footer">
 	      	<button type="button" class="btn btn-primary">Request to Borrow Item</button>
+
+          <form action="/send-email" method="POST">
+              <input name="name" placeholder="Name">
+              <input name="email" type="email" placeholder="Email">
+              <textarea name="message">
+              </textarea>
+              <button type="submit">Submit</button>
+          </form>
+          
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 	      </div>
 	    </div>
