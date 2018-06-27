@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+from share_ables import views
+
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/index.html"), name="index"),
     path(
@@ -27,6 +29,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="pages/browse.html"), 
         name="browse",
     ),
+    path("test-view/", views.test_view),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
