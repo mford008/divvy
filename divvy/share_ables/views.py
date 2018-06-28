@@ -163,7 +163,7 @@ def send_email (request):
     
     requests.post(
         "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
-        auth=("api", "MAILGUN_API_KEY"),
+        auth=("api", "c04ba4d4cbb346779ca6f3862451069f-47317c98-5877bb07"),
         data={
             "from": "divvy@borrow.com",
             "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
