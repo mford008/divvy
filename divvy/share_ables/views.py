@@ -9,13 +9,6 @@ from django.contrib import auth
 from .models import ShareItem
 import requests
 
-import os
-<<<<<<< HEAD
-mailgun_api_key = os.environ['MAILGUN_API_KEY']
-=======
-mailgun_api_key = os.environ["MAILGUN_API_KEY"]
->>>>>>> e7b96245fdc3b6c7b38033aa5aa831d9ab366347
-
 # these two forms are templated from the Twitten activity, we might not need them
 # class NewItemForm(forms.ModelForm):
 #     class Meta:
@@ -31,7 +24,7 @@ mailgun_api_key = os.environ["MAILGUN_API_KEY"]
 
 def user_page(request, username):
     user = User.objects.get(username=username)
-    # CREATE item listing
+    #CREATE item listing
     if request.method == 'POST':
 
         # i think we need to replace these forms with the ones CC made for us
@@ -46,7 +39,7 @@ def user_page(request, username):
             return redirect(request.META.get('HTTP_REFERER', '/'))
 
     else:
-        # if a GET request, give them a blank form?
+        #if a GET request, give them a blank form?
         form = NewItemForm()
 
     #READ all items that this user has posted
@@ -54,8 +47,8 @@ def user_page(request, username):
     items_by_user = items.filter(user=user)
 
     context = {
-        'items': items_by_user, # this needs to be inserted into html like: {{ items }}
-        'form': form,           # but make it into a for loop? with the tiles like on browse.html
+        'items': items_by_user, #this needs to be inserted into html like: {{ items }}
+        'form': form,           #but make it into a for loop? with the tiles like on browse.html
         'user_on_page': user,
         'is_me': user == request.user,
     }
@@ -64,8 +57,9 @@ def user_page(request, username):
     return render(request, 'pages/user_detail.html', context)
 
 
+
 def browse_page(request):
-    if request.method == 'GET': # 'GET' might be wrong too, but this page is a view only page
+    if request.method == 'GET': #'GET' might be wrong too, but this page is a view only page
                                 # so it made sense in my head...
 
         # i think this part is wrong, my goal is to authenticate the user/group
@@ -79,8 +73,8 @@ def browse_page(request):
             return render(request, 'pages/browse.html', context)
 
     else:
-        # redirects to page where they came from
         return redirect(request.META.get('HTTP_REFERER', '/'))
+        #redirects to page where they came from
 
 
 # this def should be okay, but we wont know till all the rest of the code is working
@@ -141,33 +135,14 @@ def test_view(request):
     }
     return render(request, 'pages/browse_test_view.html', context)
 
-<<<<<<< HEAD:share_ables/views.py
 
 def send_email(request):
     name = request.POST["name"]
     email = request.POST["email"]
     message = request.POST["message"]
-    print(email)
-    requests.post(
-        "https://api.mailgun.net/v3/sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org/messages",
-        auth=("api", "MAILGUN_API_KEY"),
-        data={"from": "Liam <Bill@ClintonFoundation.net>",
-              "to": ["liambeijing@gmail.com", "@sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org"],
-              "subject": "subject",
-              "text": "text"}
-              )
-
-    return redirect(request.META.get('HTTP_REFERER', '/'))
-=======
-def send_email (request):
-    
-    name = request.POST["name"]
-    email = request.POST["email"]
-    message = request.POST["message"]
-    
     requests.post(
         "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
-        auth=("api", "MAILGUN_API_KEY"),
+        auth=("api", "c04ba4d4cbb346779ca6f3862451069f-47317c98-5877bb07"),
         data={
             "from": "divvy@borrow.com",
             "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
@@ -175,13 +150,4 @@ def send_email (request):
             "text": message,
             })
 
-
     return redirect(request.META.get('HTTP_REFERER', '/'))
-    
-    
-    
-    
-    
-    
-    
-
