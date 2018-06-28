@@ -136,15 +136,28 @@ def test_view(request):
  
 
 def send_email (request):
+    
     name = request.POST["name"]
     email = request.POST["email"]
     message = request.POST["message"]
-    requests.post("https://api.mailgun.net/v3/sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org/messages",
-        auth=("api", "a971960a2131273331c519e762e089a9-e44cc7c1-4e6ce274"),
-        data={"from": "Liam <Bill@ClintonFoundation.net>",
-              "to": ["liambeijing@gmail.com", "@sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org"],
-              "subject": "subject",
-              "text": "text"})
+    
+    requests.post(
+        "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
+        auth=("api", "c04ba4d4cbb346779ca6f3862451069f-47317c98-5877bb07"),
+        data={
+            "from": "divvy@borrow.com",
+            "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
+            "subject": "Can I borrow your stuff? From: " + name,
+            "text": message,
+            })
 
 
-    return redirect("/")
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+    
+    
+    
+    
+    
+    
+    
+    
