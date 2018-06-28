@@ -7,6 +7,11 @@ urlpatterns = [
     path("user_page", view=views.user_page, name="myprofile"),
     path("browse_page", view=views.browse_page, name="browse"),
     
+    path("test-view/", views.test_view),
+
+    path("send-email/", views.send_email),
+    
+
     #we need to add new paths, but this can be done at the end when we have all of our views
 
     path("", view=views.UserListView.as_view(), name="list"),
