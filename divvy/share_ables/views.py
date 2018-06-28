@@ -134,6 +134,7 @@ def test_view(request):
     }
     return render(request, 'pages/browse_test_view.html', context)
 
+<<<<<<< HEAD:share_ables/views.py
 
 def send_email(request):
     name = request.POST["name"]
@@ -150,3 +151,31 @@ def send_email(request):
               )
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
+=======
+def send_email (request):
+    
+    name = request.POST["name"]
+    email = request.POST["email"]
+    message = request.POST["message"]
+    
+    requests.post(
+        "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
+        auth=("api", "c04ba4d4cbb346779ca6f3862451069f-47317c98-5877bb07"),
+        data={
+            "from": "divvy@borrow.com",
+            "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
+            "subject": "Can I borrow your stuff? From: " + name,
+            "text": message,
+            })
+
+
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+    
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> 0eaf4c5494cf94b10f4247182558588acbf840f6:divvy/share_ables/views.py
