@@ -9,6 +9,9 @@ from django.contrib import auth
 from .models import ShareItem
 import requests
 
+import os
+mailgun_api_key = os.environ["MAILGUN_API_KEY"]
+
 # these two forms are templated from the Twitten activity, we might not need them
 # class NewItemForm(forms.ModelForm):
 #     class Meta:
@@ -143,7 +146,7 @@ def send_email(request):
     print(email)
     requests.post(
         "https://api.mailgun.net/v3/sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org/messages",
-        auth=("api", "a971960a2131273331c519e762e089a9-e44cc7c1-4e6ce274"),
+        auth=("api", "MAILGUN_API_KEY"),
         data={"from": "Liam <Bill@ClintonFoundation.net>",
               "to": ["liambeijing@gmail.com", "@sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org"],
               "subject": "subject",
@@ -160,7 +163,7 @@ def send_email (request):
     
     requests.post(
         "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
-        auth=("api", "c04ba4d4cbb346779ca6f3862451069f-47317c98-5877bb07"),
+        auth=("api", "MAILGUN_API_KEY"),
         data={
             "from": "divvy@borrow.com",
             "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
@@ -177,5 +180,4 @@ def send_email (request):
     
     
     
-    
->>>>>>> 0eaf4c5494cf94b10f4247182558588acbf840f6:divvy/share_ables/views.py
+
