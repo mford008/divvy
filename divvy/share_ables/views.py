@@ -8,6 +8,7 @@ from django.contrib import auth
 
 from .models import ShareItem
 import requests
+import os
 
 # these two forms are templated from the Twitten activity, we might not need them
 # class NewItemForm(forms.ModelForm):
@@ -21,6 +22,32 @@ import requests
 #         model = ShareItem
 #         fields = ['name', 'availability', 'timeframe', 'image']
 
+items = [
+    {
+        'id': 1,
+        'image_src': '/static/images/basketball.jpg',
+        'item_name': 'Basketball',
+        'owner': 'Liam',
+        'availability': 'Weekdays',
+        'suggested_borrowing_timeframe': 'Half a day',
+    },
+    {
+        'id': 2,
+        'image_src': '/static/images/moka_pot.jpg',
+        'item_name': 'Moka Pot',
+        'owner': 'Maddy',
+        'availability': 'Weekends',
+        'suggested_borrowing_timeframe': 'One day',
+    },
+    {
+        'id': 3,
+        'image_src': '/static/images/gloves.jpg',
+        'item_name': 'Gardening Gloves',
+        'owner': 'Tyler',
+        'availability': 'Thursday-Sunday',
+        'suggested_borrowing_timeframe': 'Two to three days',
+    },
+]
 
 def user_page(request, username):
     user = User.objects.get(username=username)
@@ -59,22 +86,32 @@ def user_page(request, username):
 
 
 def browse_page(request):
-    if request.method == 'GET': #'GET' might be wrong too, but this page is a view only page
+    context = {
+        'items': items,
+    }
+    
+    return render(request, 'pages/browse.html', context)
+
+
+
+
+    #if request.method == 'GET': #'GET' might be wrong too, but this page is a view only page
                                 # so it made sense in my head...
 
         # i think this part is wrong, my goal is to authenticate the user/group
         # before displaying the items they are 'allowed' to see
-        if auth.login(request, user):
-            context = {
-                'share_ables': all_items,
-                'user_on_page': user,
-                'is_me': user == request.user,
-            }
-            return render(request, 'pages/browse.html', context)
+        #if auth.login(request, user):
+            #context = {
+                #'share_ables': all_items,
+                #'user_on_page': user,
+                #'is_me': user == request.user,
+            #}
+            #return render(request, 'pages/browse.html', context)
 
-    else:
+    #else:
         #redirects to page where they came from
-        return redirect(request.META.get('HTTP_REFERER', '/'))
+        #return redirect(request.META.get('HTTP_REFERER', '/'))
+
 
 
 #this def should be okay, but we wont know till all the rest of the code is working
@@ -101,32 +138,7 @@ def update_item(request, item_id):
     #redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
-items = [
-    {
-        'id': 1,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
-        'owner': 'Liam',
-        'availability': 'Weekdays',
-        'suggested_borrowing_timeframe': 'Half a day',
-    },
-    {
-        'id': 2,
-        'image_src': '/static/images/moka_pot.jpg',
-        'item_name': 'Moka Pot',
-        'owner': 'Maddy',
-        'availability': 'Weekends',
-        'suggested_borrowing_timeframe': 'One day',
-    },
-    {
-        'id': 3,
-        'image_src': '/static/images/gloves.jpg',
-        'item_name': 'Gardening Gloves',
-        'owner': 'Tyler',
-        'availability': 'Thursday-Sunday',
-        'suggested_borrowing_timeframe': 'Two to three days',
-    },
-]
+
 
 def test_view(request):
     context = {
@@ -135,15 +147,18 @@ def test_view(request):
     return render(request, 'pages/browse_test_view.html', context)
  
 
-def send_email (request):
+
+def send_email(request):
     
     name = request.POST["name"]
     email = request.POST["email"]
     message = request.POST["message"]
     
+    mailgun_api_key = os.environ['MAILGUN_API_KEY']
+    
     requests.post(
         "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
-        auth=("api", "c04ba4d4cbb346779ca6f3862451069f-47317c98-5877bb07"),
+        auth=("api", mailgun_api_key),
         data={
             "from": "divvy@borrow.com",
             "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
@@ -151,11 +166,10 @@ def send_email (request):
             "text": message,
             })
 
-
     return redirect(request.META.get('HTTP_REFERER', '/'))
     
     
-    
+   
     
     
     
