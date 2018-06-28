@@ -9,6 +9,9 @@ from django.contrib import auth
 from .models import ShareItem
 import requests
 
+import os
+mailgun_api_key = os.environ['MAILGUN_API_KEY']
+
 # these two forms are templated from the Twitten activity, we might not need them
 # class NewItemForm(forms.ModelForm):
 #     class Meta:
@@ -160,7 +163,7 @@ def send_email (request):
     
     requests.post(
         "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
-        auth=("api", "c04ba4d4cbb346779ca6f3862451069f-47317c98-5877bb07"),
+        auth=("api", "MAILGUN_API_KEY"),
         data={
             "from": "divvy@borrow.com",
             "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
