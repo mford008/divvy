@@ -24,7 +24,7 @@ import requests
 
 def user_page(request, username):
     user = User.objects.get(username=username)
-    #CREATE item listing
+    # CREATE item listing
     if request.method == 'POST':
 
         # i think we need to replace these forms with the ones CC made for us
@@ -39,7 +39,7 @@ def user_page(request, username):
             return redirect(request.META.get('HTTP_REFERER', '/'))
 
     else:
-        #if a GET request, give them a blank form?
+        # if a GET request, give them a blank form?
         form = NewItemForm()
 
     #READ all items that this user has posted
@@ -47,8 +47,8 @@ def user_page(request, username):
     items_by_user = items.filter(user=user)
 
     context = {
-        'items': items_by_user, #this needs to be inserted into html like: {{ items }}
-        'form': form,           #but make it into a for loop? with the tiles like on browse.html
+        'items': items_by_user, # this needs to be inserted into html like: {{ items }}
+        'form': form,           # but make it into a for loop? with the tiles like on browse.html
         'user_on_page': user,
         'is_me': user == request.user,
     }
@@ -57,9 +57,8 @@ def user_page(request, username):
     return render(request, 'pages/user_detail.html', context)
 
 
-
 def browse_page(request):
-    if request.method == 'GET': #'GET' might be wrong too, but this page is a view only page
+    if request.method == 'GET': # 'GET' might be wrong too, but this page is a view only page
                                 # so it made sense in my head...
 
         # i think this part is wrong, my goal is to authenticate the user/group
@@ -73,33 +72,33 @@ def browse_page(request):
             return render(request, 'pages/browse.html', context)
 
     else:
-        #redirects to page where they came from
+        # redirects to page where they came from
         return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
-#this def should be okay, but we wont know till all the rest of the code is working
+# this def should be okay, but we wont know till all the rest of the code is working
 def delete_item(request, item_id):
     item = ShareItem.objects.get(id=item_id)
     item.delete()
 
-    #redirects to page where they came from
+    # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
-
 def update_item(request, item_id):
-    #this code is incomplete, ['fields'] needs to be changed
-    #its supposed to retrieve the fields they want to update from the update form
+    # this code is incomplete, ['fields'] needs to be changed
+    # its supposed to retrieve the fields they want to update from the update form
     update = request.POST['fields']
 
-    #this code should work, it takes the current item and all the fields
-    #and replaces it with the new, updated item
+    # this code should work, it takes the current item and all the fields
+    # and replaces it with the new, updated item
     item = ShareItem.objects.get(id=item_id)
     item.update = update
     item.save()
 
-    #redirects to page where they came from
+    # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
 
 items = [
     {
@@ -128,23 +127,26 @@ items = [
     },
 ]
 
+
 def test_view(request):
     context = {
         'items': items,
     }
     return render(request, 'pages/browse_test_view.html', context)
- 
 
-def send_email (request):
+
+def send_email(request):
     name = request.POST["name"]
     email = request.POST["email"]
     message = request.POST["message"]
-    requests.post("https://api.mailgun.net/v3/sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org/messages",
+    print(email)
+    requests.post(
+        "https://api.mailgun.net/v3/sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org/messages",
         auth=("api", "a971960a2131273331c519e762e089a9-e44cc7c1-4e6ce274"),
         data={"from": "Liam <Bill@ClintonFoundation.net>",
               "to": ["liambeijing@gmail.com", "@sandboxdfdb318239f34b8d86693ee615721e9b.mailgun.org"],
               "subject": "subject",
-              "text": "text"})
+              "text": "text"}
+              )
 
-
-    return redirect("/")
+    return redirect(request.META.get('HTTP_REFERER', '/'))
