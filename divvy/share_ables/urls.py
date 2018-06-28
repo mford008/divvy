@@ -4,8 +4,8 @@ from . import views
 
 app_name = "share_ables"
 urlpatterns = [
-    path("user_page", view=views.user_page, name="myprofile"),
-    path("browse_page", view=views.browse_page, name="browse"),
+    path("user_page/", view=views.user_page, name="myprofile"),
+    path("browse/", views.browse_page),
     
     path("test-view/", views.test_view),
 

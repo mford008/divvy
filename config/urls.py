@@ -20,18 +20,14 @@ urlpatterns = [
         name="invite",
     ),
     path(
-        "post/", 
-        TemplateView.as_view(template_name="pages/post.html"), 
-        name="post",
-    ),
-    path(
         "browse/", 
-        TemplateView.as_view(template_name="pages/browse.html"), 
+        views.browse_page, 
         name="browse",
     ),
     path("test-view/", views.test_view),
 
     path("send-email/", views.send_email),
+    
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
