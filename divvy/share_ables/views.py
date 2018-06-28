@@ -10,6 +10,9 @@ from .models import ShareItem
 import requests
 import os
 
+import os
+mailgun_api_key = os.environ['MAILGUN_API_KEY']
+
 # these two forms are templated from the Twitten activity, we might not need them
 # class NewItemForm(forms.ModelForm):
 #     class Meta:
