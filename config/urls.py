@@ -24,7 +24,11 @@ urlpatterns = [
         views.browse_page,
         name="browse",
     ),
-    
+    path(
+        "upload/",
+        views.share_page,
+        name="share_page"
+    ),
     path("send-email/", views.send_email),
 
     # Django Admin, use {% url 'admin:index' %}

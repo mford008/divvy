@@ -85,11 +85,17 @@ items = [
         'suggested_borrowing_timeframe': 'Mornings?',
     },
 ]
-
 # Adds items to the users share page
 
+
+class NewItemForm(forms.ModelForm):
+    class Meta:
+        model = ShareItem
+        fields = ['username', 'avail_time', 'borrow_time', 'descript', 'image']
+
+
 def share_page(request):
-    user = User.objects.get(username=username)
+    user = ShareItem.objects.get(username=username)
     #CREATE item listing
     if request.method == 'POST':
 
@@ -110,18 +116,17 @@ def share_page(request):
 
     #READ all items that this user has posted
     #items = ShareItem.objects.order_by('-created')
-    items_by_user = items
-
+    # items_by_user = items
+    #
     context = {
-        'items': items_by_user, #this needs to be inserted into html like: {{ items }}
-        'form': form,           #but make it into a for loop? with the tiles like on browse.html
-        'user_on_page': user,
-        'is_me': user == request.user,
+    #     'items': items_by_user, #this needs to be inserted into html like: {{ items }}
+        'form': form,           # but make it into a for loop? with the tiles like on browse.html
+    #     'user_on_page': user,
+    #     'is_me': user == request.user,
     }
 
     # this return might be in the wrong spot
     return render(request, 'pages/upload.html', context)
-
 
 
 def browse_page(request):
@@ -133,7 +138,6 @@ def browse_page(request):
     return render(request, 'pages/browse.html', context)
 
 
-
 # this def should be okay, but we wont know till all the rest of the code is working
 def delete_item(request, item_id):
     item = ShareItem.objects.get(id=item_id)
@@ -141,7 +145,6 @@ def delete_item(request, item_id):
 
     # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
-
 
 
 def update_item(request, item_id):
@@ -157,7 +160,6 @@ def update_item(request, item_id):
 
     # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
-
 
 
 def send_email(request):

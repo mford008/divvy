@@ -9,12 +9,15 @@ more functionality later...
 
 
 class ShareItem(models.Model):
-    item = models.ForeignKey(
+    username = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
     )
+    item_name = models.CharField(max_length=120)
+    avail_time = models.CharField(max_length=20)
+    borrow_time = models.CharField(max_length=20)
+    descript = models.CharField(max_length=255)
+    image = models.FileField(upload_to='divvy/static/images', null=True, blank=True)
 
-    image = models.FileField(upload_to='item-images', null=True, blank=True)
-
-    created = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.username
