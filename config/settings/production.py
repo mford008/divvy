@@ -1,6 +1,6 @@
 from .base import *  # noqa
 from .base import env
-import os
+
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -14,12 +14,7 @@ ALLOWED_HOSTS = ['*']
 DATABASES['default'] = env.db('DATABASE_URL')  # noqa F405
 DATABASES['default']['ATOMIC_REQUESTS'] = True  # noqa F405
 DATABASES['default']['CONN_MAX_AGE'] = env.int('CONN_MAX_AGE', default=60)  # noqa F405
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(str(ROOT_DIR), 'db.sqlite3'),
-    }
-}
+
 
 # CACHES
 # ------------------------------------------------------------------------------
