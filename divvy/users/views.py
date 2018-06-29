@@ -5,13 +5,6 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from django.shortcuts import render
 
 from .models import User
-from .models import ShareGroup
-
-
-class NewShareGroupForm(forms.ModelForm):
-    class Meta:
-        model = ShareGroup
-        fields = ['group_name', 'user']
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -52,29 +45,4 @@ class UserListView(LoginRequiredMixin, ListView):
     slug_url_kwarg = "username"
 
 
-class UserGroupView(LoginRequiredMixin, ListView):
-    model = ShareGroup
-    slug_field = "username"
-    slug_url_kwarg = "username"
 
-
-# def view_all_groups(request, username):
-#     if request.method == 'POST':
-#         form = NewShareGroupForm(request.POST)
-#         if form.is_valid():
-#             group = form.save()
-#     else:
-#         form = NewShareGroupForm()
-#
-#     context = {
-#         'groups': form,
-#     }
-#     return render(request, 'pages/invitation.html', context)
-
-    #def update_groups(request, group_id):
-        #new_group = request.POST['group']
-        #group = ShareGroup.objects.get(id=group_id)
-        #group.new_group = new_group
-        #group.save()
-
-        #return render(request, 'pages/all_groups.html', context)
