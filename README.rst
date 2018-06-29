@@ -7,6 +7,11 @@ Share household items with neighbors!
      :target: https://github.com/pydanny/cookiecutter-django/
      :alt: Built with Cookiecutter Django
 
+Divvy is an application where users can sign up and share their household items
+with neighbors and friends. Some examples of items to share are sporting equipment,
+yard tools, or appliances. Users who are logged in can post items for other users
+to view and request in the browse page. An email is sent to the user who posted
+the item as a borrowing request.
 
 Settings
 --------

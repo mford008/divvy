@@ -3,8 +3,8 @@
 {% block content %}
 <div class="browsingpage-background-image">
   <div class="container">
-    <div class="heading">
-      <h1 style="margin-top: 20px;font-weight: bold; ">Shared Stuff</h1>
+    <div>
+      <h1 class="heading">Shared Stuff</h1>
     </div>
     <div class="row">
     {% for item in items %}
@@ -14,7 +14,7 @@
                     <img src="{{ item.image_src }}" alt="Card Image" class="card-img-top">
                 </a>
             <div class="card-body">
-            
+
     <!-- Modal Start -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         {{ item.item_name }}
@@ -55,9 +55,3 @@
     </div>
 
 {% endblock content %}
-
-
-
-
-
-

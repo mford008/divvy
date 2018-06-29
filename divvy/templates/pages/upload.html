@@ -1,13 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-  <div class="heading">
-    <h1>Sharing Made Easy</h1>
-  </div>
-
-</div>
-      <h2>My Share-able Items</h2>
+<div class="upload-background" style="padding-bottom: 275px">
+      <h1 class="heading">My Share-able Items</h1>
       {% for item in database %}
       <div class="row">
         <div class="col-md-6 col-lg-4">
@@ -41,7 +36,7 @@
             <div class="form-area">
                 <form role="form" action="." method="POST">
                   {% csrf_token %}
-                <h1 style="margin-bottom: 25px; text-align: center;">Upload an Item!</h1>
+                <h1 class="heading">Upload an Item!</h1>
             <div class="form-group">
                 <input type="text" class="form-control" id="name" name="item name" placeholder="Item Name" required>
             </div>
@@ -53,8 +48,8 @@
                 <input type="text" class="form-control" id="availability" name="availability" placeholder="Availability" required>
             </div>
                 <div class="controls">
-                    <button class="btn" type="button" id="submit-picture" name="submit" class="btn btn-primary pull-right">Upload Picture</button>
-                    <button class="btn" type="button" id="submit-item" name="submit" class="btn btn-primary pull-right">Upload Item</button>
+                    <button class="btn" type="button" id="submit-picture" name="submit" class="btn btn-primary pull-right" style="background-color: #76d695;color: white;border-color: #76d695;">Upload Picture</button>
+                    <button class="btn" type="button" id="submit-item" name="submit" class="btn btn-primary pull-right" style="background-color: #76d695;color: white;border-color: #76d695;">Upload Item</button>
                 </div>
               </form>
             </div>
