@@ -89,7 +89,7 @@ def browse_page(request):
     context = {
         'items': items,
     }
-    
+
     return render(request, 'pages/browse.html', context)
 
 
@@ -148,13 +148,13 @@ def test_view(request):
 
 def send_email(request):
 
-    
+
     name = request.POST["name"]
     email = request.POST["email"]
     message = request.POST["message"]
-    
+
     mailgun_api_key = os.environ['MAILGUN_API_KEY']
-    
+
     requests.post(
         "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
         auth=("api", mailgun_api_key),
@@ -167,13 +167,3 @@ def send_email(request):
             })
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
-
-    
-    
-   
-    
-    
-    
-    
-    
-
