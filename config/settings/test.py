@@ -4,7 +4,7 @@ With these settings, tests run faster.
 
 from .base import *  # noqa
 from .base import env
-
+import os
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
@@ -53,3 +53,9 @@ EMAIL_PORT = 1025
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(str(ROOT_DIR), 'db.sqlite3'),
+    }
+}
