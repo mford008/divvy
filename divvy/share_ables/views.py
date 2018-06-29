@@ -147,7 +147,6 @@ def test_view(request):
 
 
 def send_email(request):
-
     
     name = request.POST["name"]
     email = request.POST["email"]
