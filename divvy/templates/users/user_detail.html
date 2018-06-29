@@ -15,28 +15,29 @@
       {% endif %}
 
       <h2>My Share-able Items</h2>
+      {% for item in items %}
       <div class="row">
         <div class="col-md-6 col-lg-4">
             <div class="card transform-on-hover">
                 <a class="lightbox">
-                <img src="/static/images/basketball.jpg" alt="Card Image" class="card-img-top">
+                <img src="{{ item.image_path }}" alt="Card Image" class="card-img-top">
                 </a>
           <div class="card-body">
-            <h2 class="card-title"><a href="#">Basketball</a></h2>
-            <p class="text-muted card-text">Belongs to: {{ user_on_page }} <br>Availability: Any time. <br>Suggested Borrowing Timeframe: Half day.</p>
+            <h2 class="card-title"><a href="#">{{ item.item_name }}</a></h2>
+            <p class="text-muted card-text">Belongs to: {{ user_on_page }} <br>Availability: {{ item.avail_time }} <br>Suggested Borrowing Timeframe: {{ item.borrow_time }}</p>
           </div>
         </div>
       </div>
+      {% endfor %}
 
 
 
 
-
-      <form action="." method="POST">
+      <!--<form action="." method="POST">
         {% csrf_token %}
           {{ form.as_p }}
         <button>Add Item</button>
-      </form>
+      </form>-->
       <div class="sharable-items-form">
 
       </div>
