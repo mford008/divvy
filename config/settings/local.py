@@ -9,7 +9,12 @@ DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env('DJANGO_SECRET_KEY', default='cvCTnGhBnAYIIzqgmc25tpRRperj8mB4RNtry8fHlEiUz7qh9QfNDtkUBca6mLaF')
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "localhost",
+    "0.0.0.0",
+    "127.0.0.1",
+    "https://divvyshare.herokuapp.com/*"
+]
 
 # CACHES
 # ------------------------------------------------------------------------------
