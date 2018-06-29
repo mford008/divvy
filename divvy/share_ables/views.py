@@ -21,7 +21,7 @@ import os
 #     class Meta:
 #         model = ShareItem
 #         fields = ['name', 'availability', 'timeframe', 'image']
-
+ 
 items = [
     {
         'id': 1,
