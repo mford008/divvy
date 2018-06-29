@@ -72,7 +72,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'divvy.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
-    'share_ables',
+    'share_ables'
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
