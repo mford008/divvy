@@ -10,9 +10,9 @@ from share_ables import views
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/index.html"), name="index"),
     path(
-        "about/",
-        TemplateView.as_view(template_name="pages/about.html"),
-        name="about",
+        "upload/",
+        TemplateView.as_view(template_name="pages/upload.html"),
+        name="upload",
     ),
     path(
         "invite/",
@@ -20,13 +20,13 @@ urlpatterns = [
         name="invite",
     ),
     path(
-        "browse/", 
-        views.browse_page, 
+        "browse/",
+        views.browse_page,
         name="browse",
     ),
     path("test-view/", views.test_view),
     path("send-email/", views.send_email),
-    
+
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
