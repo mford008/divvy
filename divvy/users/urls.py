@@ -12,5 +12,5 @@ urlpatterns = [
         view=views.UserDetailView.as_view(),
         name="detail",
     ),
-    path("invite/", view=views.UserGroupView.as_view(), name="grouplist")
+    path("invite/", view=views.UserGroupView.as_view(), name="grouplist"),
 ]

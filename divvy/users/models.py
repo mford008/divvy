@@ -21,7 +21,7 @@ class ShareGroup(models.Model):
     group_name = models.CharField(_("Name of Group"), blank=True, max_length=255)
     user = models.ManyToManyField(
         User,
-        related_name="is_member"
+        related_name="is_member",
     )
 
     def __str__(self):

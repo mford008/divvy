@@ -10,9 +10,6 @@ from .models import ShareItem
 import requests
 import os
 
-import os
-mailgun_api_key = os.environ['MAILGUN_API_KEY']
-
 # these two forms are templated from the Twitten activity, we might not need them
 # class NewItemForm(forms.ModelForm):
 #     class Meta:
@@ -103,6 +100,7 @@ def browse_page(request):
 
         # i think this part is wrong, my goal is to authenticate the user/group
         # before displaying the items they are 'allowed' to see
+
         #if auth.login(request, user):
             #context = {
                 #'share_ables': all_items,
@@ -116,29 +114,27 @@ def browse_page(request):
         #return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
-
-#this def should be okay, but we wont know till all the rest of the code is working
+# this def should be okay, but we wont know till all the rest of the code is working
 def delete_item(request, item_id):
     item = ShareItem.objects.get(id=item_id)
     item.delete()
 
-    #redirects to page where they came from
+    # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
-
 def update_item(request, item_id):
-    #this code is incomplete, ['fields'] needs to be changed
-    #its supposed to retrieve the fields they want to update from the update form
+    # this code is incomplete, ['fields'] needs to be changed
+    # its supposed to retrieve the fields they want to update from the update form
     update = request.POST['fields']
 
-    #this code should work, it takes the current item and all the fields
-    #and replaces it with the new, updated item
+    # this code should work, it takes the current item and all the fields
+    # and replaces it with the new, updated item
     item = ShareItem.objects.get(id=item_id)
     item.update = update
     item.save()
 
-    #redirects to page where they came from
+    # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
@@ -148,10 +144,10 @@ def test_view(request):
         'items': items,
     }
     return render(request, 'pages/browse_test_view.html', context)
- 
 
 
 def send_email(request):
+
     
     name = request.POST["name"]
     email = request.POST["email"]
@@ -162,6 +158,7 @@ def send_email(request):
     requests.post(
         "https://api.mailgun.net/v3/sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org/messages",
         auth=("api", mailgun_api_key),
+
         data={
             "from": "divvy@borrow.com",
             "to": [email, "@sandbox5b2a8563d7804446a51e0188857ff46b.mailgun.org"],
@@ -170,6 +167,7 @@ def send_email(request):
             })
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
     
     
    
@@ -178,3 +176,4 @@ def send_email(request):
     
     
     
+
