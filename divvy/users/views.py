@@ -45,3 +45,4 @@ class UserListView(LoginRequiredMixin, ListView):
     slug_url_kwarg = "username"
 
 
+

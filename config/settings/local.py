@@ -1,5 +1,6 @@
 from .base import *  # noqa
 from .base import env
+import os
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -12,6 +13,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "0.0.0.0",
     "127.0.0.1",
+    "https://divvyshare.herokuapp.com"
 ]
 
 # CACHES
@@ -63,7 +65,6 @@ INSTALLED_APPS += ['django_extensions']  # noqa F405
 # Your stuff...
 # ------------------------------------------------------------------------------
 
-import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
