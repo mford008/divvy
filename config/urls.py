@@ -24,7 +24,7 @@ urlpatterns = [
         views.browse_page,
         name="browse",
     ),
-    path("test-view/", views.test_view),
+    
     path("send-email/", views.send_email),
 
     # Django Admin, use {% url 'admin:index' %}

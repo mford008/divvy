@@ -10,17 +10,6 @@ from .models import ShareItem
 import requests
 import os
 
-# these two forms are templated from the Twitten activity, we might not need them
-# class NewItemForm(forms.ModelForm):
-#     class Meta:
-#         model = ShareItem
-#         fields = ['name', 'owner', 'availability', 'timeframe', 'image']
-
-
-# class EditItemForm(forms.ModelForm):
-#     class Meta:
-#         model = ShareItem
-#         fields = ['name', 'availability', 'timeframe', 'image']
  
 items = [
     {
@@ -49,55 +38,57 @@ items = [
     },
     {
         'id': 4,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
-        'owner': 'Liam',
-        'availability': 'Weekdays',
-        'suggested_borrowing_timeframe': 'Half a day',
+        'image_src': '/static/images/ladder.jpg',
+        'item_name': 'Ladder',
+        'owner': 'Tucker',
+        'availability': 'Weekends',
+        'suggested_borrowing_timeframe': 'A day or two',
     },
     {
         'id': 5,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
+        'image_src': '/static/images/cupcakepan.jpg',
+        'item_name': 'Cupcake Pan',
         'owner': 'Liam',
-        'availability': 'Weekdays',
+        'availability': 'Whenever',
         'suggested_borrowing_timeframe': 'Half a day',
     },
     {
         'id': 6,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
-        'owner': 'Liam',
-        'availability': 'Weekdays',
-        'suggested_borrowing_timeframe': 'Half a day',
+        'image_src': '/static/images/heart_bowls.jpg',
+        'item_name': 'Heart Bowls',
+        'owner': 'Maddy',
+        'availability': 'Anytime',
+        'suggested_borrowing_timeframe': 'One day',
     },
     {
         'id': 7,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
-        'owner': 'Liam',
-        'availability': 'Weekdays',
+        'image_src': '/static/images/beach_chairs.jpg',
+        'item_name': 'Beach Chairs',
+        'owner': 'Tyler',
+        'availability': 'Weekends',
         'suggested_borrowing_timeframe': 'Half a day',
     },
     {
         'id': 8,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
+        'image_src': '/static/images/barbecue2.jpg',
+        'item_name': 'Barbecue',
         'owner': 'Liam',
-        'availability': 'Weekdays',
+        'availability': 'Weekends',
         'suggested_borrowing_timeframe': 'Half a day',
     },
     {
         'id': 9,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
-        'owner': 'Liam',
-        'availability': 'Weekdays',
-        'suggested_borrowing_timeframe': 'Half a day',
+        'image_src': '/static/images/waffleiron.jpg',
+        'item_name': 'Best Waffle Iron',
+        'owner': 'Tucker',
+        'availability': 'Anytime',
+        'suggested_borrowing_timeframe': 'Mornings?',
     },
 ]
 
-def user_page(request, username):
+# Adds items to the users share page
+
+def share_page(request):
     user = User.objects.get(username=username)
     #CREATE item listing
     if request.method == 'POST':
@@ -129,37 +120,18 @@ def user_page(request, username):
     }
 
     # this return might be in the wrong spot
-    return render(request, 'pages/user_detail.html', context)
+    return render(request, 'pages/upload.html', context)
 
 
 
 def browse_page(request):
+    # Populates the browse page with fake items for users to 'borrow'
     context = {
         'items': items,
     }
 
     return render(request, 'pages/browse.html', context)
 
-
-
-
-    #if request.method == 'GET': #'GET' might be wrong too, but this page is a view only page
-                                # so it made sense in my head...
-
-        # i think this part is wrong, my goal is to authenticate the user/group
-        # before displaying the items they are 'allowed' to see
-
-        #if auth.login(request, user):
-            #context = {
-                #'share_ables': all_items,
-                #'user_on_page': user,
-                #'is_me': user == request.user,
-            #}
-            #return render(request, 'pages/browse.html', context)
-
-    #else:
-        #redirects to page where they came from
-        #return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 # this def should be okay, but we wont know till all the rest of the code is working
@@ -169,6 +141,7 @@ def delete_item(request, item_id):
 
     # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
 
 
 def update_item(request, item_id):
@@ -185,13 +158,6 @@ def update_item(request, item_id):
     # redirects to page where they came from
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
-
-
-def test_view(request):
-    context = {
-        'items': items,
-    }
-    return render(request, 'pages/browse_test_view.html', context)
 
 
 def send_email(request):
