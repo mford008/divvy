@@ -13,7 +13,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "0.0.0.0",
     "127.0.0.1",
-    "https://divvyshare.herokuapp.com/*"
+    "https://divvyshare.herokuapp.com"
 ]
 
 # CACHES
