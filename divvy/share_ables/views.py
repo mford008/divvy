@@ -70,8 +70,8 @@ def user_page(request, username):
         form = NewItemForm()
 
     #READ all items that this user has posted
-    items = ShareItem.objects.order_by('-created')
-    items_by_user = items.filter(user=user)
+    #items = ShareItem.objects.order_by('-created')
+    items_by_user = items
 
     context = {
         'items': items_by_user, #this needs to be inserted into html like: {{ items }}

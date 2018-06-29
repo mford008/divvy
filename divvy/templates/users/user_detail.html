@@ -15,39 +15,40 @@
       {% endif %}
 
       <h2>My Share-able Items</h2>
+      {% for item in items %}
       <div class="row">
         <div class="col-md-6 col-lg-4">
             <div class="card transform-on-hover">
                 <a class="lightbox">
-                <img src="/static/images/basketball.jpg" alt="Card Image" class="card-img-top">
+                <img src="{{ item.image_path }}" alt="Card Image" class="card-img-top">
                 </a>
           <div class="card-body">
-            <h2 class="card-title"><a href="#">Basketball</a></h2>
-            <p class="text-muted card-text">Belongs to: {{ user_on_page }} <br>Availability: Any time. <br>Suggested Borrowing Timeframe: Half day.</p>
+            <h2 class="card-title"><a href="#">{{ item.item_name }}</a></h2>
+            <p class="text-muted card-text">Belongs to: {{ user_on_page }} <br>Availability: {{ item.avail_time }} <br>Suggested Borrowing Timeframe: {{ item.borrow_time }}</p>
           </div>
         </div>
       </div>
+      {% endfor %}
 
 
 
 
-
-      <form action="." method="POST">
+      <!--<form action="." method="POST">
         {% csrf_token %}
           {{ form.as_p }}
         <button>Add Item</button>
-      </form>
-      <!-- <div class="sharable-items-form">
+      </form>-->
+      <div class="sharable-items-form">
 
       </div>
 
 
-      <!-- <div class="container form-container">
+      <div class="container form-container">
         <div class="col-md-5">
             <div class="form-area">
-                <form role="form" action="." method="POST">#}
-                  {# {% csrf_token %}#}
-                {# <h1 style="margin-bottom: 25px; text-align: center;">Upload an Item!</h1>
+                <form role="form" action="." method="POST">
+                  {% csrf_token %}
+                <h1 style="margin-bottom: 25px; text-align: center;">Upload an Item!</h1>
             <div class="form-group">
                 <input type="text" class="form-control" id="name" name="item name" placeholder="Item Name" required>
             </div>
@@ -62,8 +63,8 @@
                     <button class="btn" type="button" id="submit-picture" name="submit" class="btn btn-primary pull-right">Upload Picture</button>
                     <button class="btn" type="button" id="submit-item" name="submit" class="btn btn-primary pull-right">Upload Item</button>
                 </div>
-              </form> #}
-            </div> -->
+              </form>
+            </div>
 
       </div>
 
