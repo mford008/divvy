@@ -94,8 +94,8 @@ class NewItemForm(forms.ModelForm):
         fields = ['username', 'avail_time', 'borrow_time', 'descript', 'image']
 
 
-def share_page(request, username):
-    user = ShareItem.objects.get(username=username)
+def upload(request):
+    user = ShareItem.objects.all()
     # CREATE item listing
     if request.method == 'POST':
 
