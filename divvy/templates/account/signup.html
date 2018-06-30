@@ -5,8 +5,8 @@
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 {% block inner %}
-<div class="sign-up-page-background-image">
-  <h1 style="text-align: center; margin-top: 20px; font-weight: bold;">{% trans "Sign Up" %}</h1>
+<div class="sign-up-page-background-image" style="padding-bottom: 275px;">
+  <h1 class="header">{% trans "Sign Up" %}</h1>
 
   <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}"> &nbspsign in</a>.{% endblocktrans %}</p>
 
@@ -34,5 +34,6 @@
       {% endif %}
       <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
     </form>
+</div>
 </div>
 {% endblock %}
