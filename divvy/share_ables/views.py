@@ -11,80 +11,80 @@ import requests
 import os
 
 
-items = [
-    {
-        'id': 1,
-        'image_src': '/static/images/basketball.jpg',
-        'item_name': 'Basketball',
-        'owner': 'Liam',
-        'availability': 'Weekdays',
-        'suggested_borrowing_timeframe': 'Half a day',
-    },
-    {
-        'id': 2,
-        'image_src': '/static/images/moka_pot.jpg',
-        'item_name': 'Moka Pot',
-        'owner': 'Maddy',
-        'availability': 'Weekends',
-        'suggested_borrowing_timeframe': 'One day',
-    },
-    {
-        'id': 3,
-        'image_src': '/static/images/gloves.jpg',
-        'item_name': 'Gardening Gloves',
-        'owner': 'Tyler',
-        'availability': 'Thursday-Sunday',
-        'suggested_borrowing_timeframe': 'Two to three days',
-    },
-    {
-        'id': 4,
-        'image_src': '/static/images/ladder.jpg',
-        'item_name': 'Ladder',
-        'owner': 'Tucker',
-        'availability': 'Weekends',
-        'suggested_borrowing_timeframe': 'A day or two',
-    },
-    {
-        'id': 5,
-        'image_src': '/static/images/cupcakepan.jpg',
-        'item_name': 'Cupcake Pan',
-        'owner': 'Liam',
-        'availability': 'Whenever',
-        'suggested_borrowing_timeframe': 'Half a day',
-    },
-    {
-        'id': 6,
-        'image_src': '/static/images/heart_bowls.jpg',
-        'item_name': 'Heart Bowls',
-        'owner': 'Maddy',
-        'availability': 'Anytime',
-        'suggested_borrowing_timeframe': 'One day',
-    },
-    {
-        'id': 7,
-        'image_src': '/static/images/beach_chairs.jpg',
-        'item_name': 'Beach Chairs',
-        'owner': 'Tyler',
-        'availability': 'Weekends',
-        'suggested_borrowing_timeframe': 'Half a day',
-    },
-    {
-        'id': 8,
-        'image_src': '/static/images/barbecue2.jpg',
-        'item_name': 'Barbecue',
-        'owner': 'Liam',
-        'availability': 'Weekends',
-        'suggested_borrowing_timeframe': 'Half a day',
-    },
-    {
-        'id': 9,
-        'image_src': '/static/images/waffleiron.jpg',
-        'item_name': 'Best Waffle Iron',
-        'owner': 'Tucker',
-        'availability': 'Anytime',
-        'suggested_borrowing_timeframe': 'Mornings?',
-    },
-]
+# items = [
+#     {
+#         'id': 1,
+#         'image_src': '/static/images/basketball.jpg',
+#         'item_name': 'Basketball',
+#         'owner': 'Liam',
+#         'availability': 'Weekdays',
+#         'suggested_borrowing_timeframe': 'Half a day',
+#     },
+#     {
+#         'id': 2,
+#         'image_src': '/static/images/moka_pot.jpg',
+#         'item_name': 'Moka Pot',
+#         'owner': 'Maddy',
+#         'availability': 'Weekends',
+#         'suggested_borrowing_timeframe': 'One day',
+#     },
+#     {
+#         'id': 3,
+#         'image_src': '/static/images/gloves.jpg',
+#         'item_name': 'Gardening Gloves',
+#         'owner': 'Tyler',
+#         'availability': 'Thursday-Sunday',
+#         'suggested_borrowing_timeframe': 'Two to three days',
+#     },
+#     {
+#         'id': 4,
+#         'image_src': '/static/images/ladder.jpg',
+#         'item_name': 'Ladder',
+#         'owner': 'Tucker',
+#         'availability': 'Weekends',
+#         'suggested_borrowing_timeframe': 'A day or two',
+#     },
+#     {
+#         'id': 5,
+#         'image_src': '/static/images/cupcakepan.jpg',
+#         'item_name': 'Cupcake Pan',
+#         'owner': 'Liam',
+#         'availability': 'Whenever',
+#         'suggested_borrowing_timeframe': 'Half a day',
+#     },
+#     {
+#         'id': 6,
+#         'image_src': '/static/images/heart_bowls.jpg',
+#         'item_name': 'Heart Bowls',
+#         'owner': 'Maddy',
+#         'availability': 'Anytime',
+#         'suggested_borrowing_timeframe': 'One day',
+#     },
+#     {
+#         'id': 7,
+#         'image_src': '/static/images/beach_chairs.jpg',
+#         'item_name': 'Beach Chairs',
+#         'owner': 'Tyler',
+#         'availability': 'Weekends',
+#         'suggested_borrowing_timeframe': 'Half a day',
+#     },
+#     {
+#         'id': 8,
+#         'image_src': '/static/images/barbecue2.jpg',
+#         'item_name': 'Barbecue',
+#         'owner': 'Liam',
+#         'availability': 'Weekends',
+#         'suggested_borrowing_timeframe': 'Half a day',
+#     },
+#     {
+#         'id': 9,
+#         'image_src': '/static/images/waffleiron.jpg',
+#         'item_name': 'Best Waffle Iron',
+#         'owner': 'Tucker',
+#         'availability': 'Anytime',
+#         'suggested_borrowing_timeframe': 'Mornings?',
+#     },
+# ]
 # Adds items to the users share page
 
 
@@ -114,10 +114,7 @@ def upload(request):
         form = NewItemForm()
 
     context = {
-    #     'items': items_by_user, #this needs to be inserted into html like: {{ items }}
         'form': form,           # but make it into a for loop? with the tiles like on browse.html
-        # 'user_on_page': user,
-        # 'is_me': user == request.user,
     }
 
     # this return might be in the wrong spot
@@ -126,6 +123,7 @@ def upload(request):
 
 def browse_page(request):
     # Populates the browse page with fake items for users to 'borrow'
+    items = ShareItem.objects.all()
     context = {
         'items': items,
     }
