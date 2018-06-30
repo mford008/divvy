@@ -22,7 +22,7 @@ urlpatterns = [
     path(
         "upload/",
         views.upload,
-        name="upload"
+        name="upload",
     ),
     path("send-email/", views.send_email),
 
