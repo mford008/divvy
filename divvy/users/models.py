@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
-
+# from divvy.users.models import User
 
 class User(AbstractUser):
     # First Name and Last Name do not cover name patterns
@@ -23,6 +23,18 @@ class ShareGroup(models.Model):
         User,
         related_name="is_member",
     )
+
+    def __str__(self):
+        return self.username
+
+class ShareItem(models.Model):
+    # item = models.ForeignKey(
+    #     User,
+    #     on_delete = models.CASCADE,
+    # ),
+    item_name = models.CharField(max_length=100),
+    item_description = models.CharField(max_length=200),
+    availability = models.CharField(max_length=100),
 
     def __str__(self):
         return self.username

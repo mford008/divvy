@@ -11,10 +11,10 @@ import requests
 import os
 
 # these two forms are templated from the Twitten activity, we might not need them
-# class NewItemForm(forms.ModelForm):
-#     class Meta:
-#         model = ShareItem
-#         fields = ['name', 'owner', 'availability', 'timeframe', 'image']
+class NewItemForm(forms.ModelForm):
+    class Meta:
+        model = ShareItem
+        fields = []
 
 
 # class EditItemForm(forms.ModelForm):
@@ -192,6 +192,14 @@ def test_view(request):
         'items': items,
     }
     return render(request, 'pages/browse_test_view.html', context)
+
+
+
+def upload(request):
+	context = {
+	}
+	return render(request, 'pages/upload.html', context)
+
 
 
 def send_email(request):
