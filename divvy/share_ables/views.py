@@ -97,7 +97,7 @@ items = [
     },
 ]
 
-def user_page(request, username):
+def upload(request, username):
     user = User.objects.get(username=username)
     #CREATE item listing
     if request.method == 'POST':
@@ -129,7 +129,7 @@ def user_page(request, username):
     }
 
     # this return might be in the wrong spot
-    return render(request, 'pages/user_detail.html', context)
+    return render(request, 'pages/upload.html', context)
 
 
 

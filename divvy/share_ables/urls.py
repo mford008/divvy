@@ -10,6 +10,7 @@ urlpatterns = [
    
     path("test-view/", views.test_view),
     path("send-email/", views.send_email),
+    path("upload/", view.upload),
 
 
     # we need to add new paths, but this can be done at the end when we have all of our views
