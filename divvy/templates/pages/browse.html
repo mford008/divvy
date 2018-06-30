@@ -11,7 +11,7 @@
         <div class="col-md-6 col-lg-4">
             <div class="card transform-on-hover">
                 <a class="lightbox">
-                    <img src="{{ item.image_src }}" alt="Card Image" class="card-img-top">
+                    <img src="#{{ item.image_src }}" alt="Card Image" class="card-img-top">
                 </a>
             <div class="card-body">
 
@@ -47,7 +47,7 @@
     </div>
 <!-- End Modal -->
 
-            <p class="text-muted card-text">Belongs to: {{ item.owner }}. <br>Availability: {{ item.availability }}. <br>Suggested Borrowing Timeframe: {{ item.suggested_borrowing_timeframe }}.</p>
+            <p class="text-muted card-text">Belongs to: {{ item.username }}. <br>Availability: {{ item.avail_time }}. <br>Suggested Borrowing Timeframe: {{ item.borrow_time }}.</p>
             </div>
             </div>
         </div>
