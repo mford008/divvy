@@ -91,12 +91,11 @@ items = [
 class NewItemForm(forms.ModelForm):
     class Meta:
         model = ShareItem
-        fields = ['username', 'avail_time', 'borrow_time', 'descript', 'image']
+        fields = ['item_name', 'avail_time', 'borrow_time', 'descript', 'image']
 
 
-def share_page(request):
-    user = ShareItem.objects.get(username=username)
-    #CREATE item listing
+def upload(request):
+    # CREATE item listing
     if request.method == 'POST':
 
         # i think we need to replace these forms with the ones CC made for us
@@ -105,24 +104,20 @@ def share_page(request):
 
         if form.is_valid():
             item = form.save(commit=False)
-            item.user = request.user
+            item.username = request.user
             item.save()
 
             return redirect(request.META.get('HTTP_REFERER', '/'))
 
     else:
-        #if a GET request, give them a blank form?
+        # if a GET request, give them a blank form?
         form = NewItemForm()
 
-    #READ all items that this user has posted
-    #items = ShareItem.objects.order_by('-created')
-    # items_by_user = items
-    #
     context = {
     #     'items': items_by_user, #this needs to be inserted into html like: {{ items }}
         'form': form,           # but make it into a for loop? with the tiles like on browse.html
-    #     'user_on_page': user,
-    #     'is_me': user == request.user,
+        # 'user_on_page': user,
+        # 'is_me': user == request.user,
     }
 
     # this return might be in the wrong spot
@@ -163,8 +158,6 @@ def update_item(request, item_id):
 
 
 def send_email(request):
-
-
     name = request.POST["name"]
     email = request.POST["email"]
     message = request.POST["message"]

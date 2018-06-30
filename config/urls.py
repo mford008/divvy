@@ -10,11 +10,6 @@ from share_ables import views
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/index.html"), name="index"),
     path(
-        "upload/",
-        TemplateView.as_view(template_name="pages/upload.html"),
-        name="upload",
-    ),
-    path(
         "invite/",
         TemplateView.as_view(template_name="pages/invitation.html"),
         name="invite",
@@ -26,8 +21,8 @@ urlpatterns = [
     ),
     path(
         "upload/",
-        views.share_page,
-        name="share_page"
+        views.upload,
+        name="upload",
     ),
     path("send-email/", views.send_email),
 

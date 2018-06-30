@@ -9,7 +9,7 @@ urlpatterns = [
     path("test-view/", views.test_view),
     path("send-email/", views.send_email),
     path("browse/", views.browse_page, name="browse"),
-    path("upload/", views.share_page, name="share_page"),
+    path("upload/", views.upload, name="upload"),
 
 
     # we need to add new paths, but this can be done at the end when we have all of our views
