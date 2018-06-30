@@ -12,8 +12,13 @@ h2 {
   font-size: 20px;
 }
 
-.heading, .subheading {
+.subheading {
   text-align: center;
+}
+.heading {
+  text-align: center;
+  padding-top: 20px;
+  font-weight: bold;
 }
 h2.subheading {
   font-size: 35px;
