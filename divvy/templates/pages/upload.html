@@ -31,11 +31,6 @@
 <div class="container form-container">
   <div class="col-md-5">
     <div class="form-area">
-      <form action="." method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Add Item</button>
-      </form>
       <form role="form" action="." method="POST">
       {% csrf_token %}
       <h1 style="margin-bottom: 25px; text-align: center;">Upload an Item!</h1>
@@ -51,7 +46,11 @@
         </div>
         <div class="controls">
           <button class="btn" type="button" id="submit-picture" name="submit" class="btn btn-primary pull-right">Upload Picture</button>
-          <button class="btn" type="button" id="submit-item" name="submit" class="btn btn-primary pull-right">Upload Item</button>
+        <form action="." method="POST" class="btn btn-primary pull-right">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button>Add Item</button>
+        </form>
         </div>
       </form>
     </div>
