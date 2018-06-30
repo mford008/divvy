@@ -20,6 +20,12 @@ h2 {
   padding-top: 20px;
   font-weight: bold;
 }
+.upload-background {
+  background-image: url("/static/images/friends-on-phones3.jpg");
+  background-position: 0% 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 h2.subheading {
   font-size: 35px;
   color: #1f3a6d;
@@ -89,7 +95,7 @@ div.diagram-step {
 p, .form-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  padding-top: 20px;
   text-align: center;
 }
 /*browse*/
