@@ -94,9 +94,9 @@ class NewItemForm(forms.ModelForm):
         fields = ['username', 'avail_time', 'borrow_time', 'descript', 'image']
 
 
-def share_page(request):
+def share_page(request, username):
     user = ShareItem.objects.get(username=username)
-    #CREATE item listing
+    # CREATE item listing
     if request.method == 'POST':
 
         # i think we need to replace these forms with the ones CC made for us
@@ -114,10 +114,6 @@ def share_page(request):
         #if a GET request, give them a blank form?
         form = NewItemForm()
 
-    #READ all items that this user has posted
-    #items = ShareItem.objects.order_by('-created')
-    # items_by_user = items
-    #
     context = {
     #     'items': items_by_user, #this needs to be inserted into html like: {{ items }}
         'form': form,           # but make it into a for loop? with the tiles like on browse.html
