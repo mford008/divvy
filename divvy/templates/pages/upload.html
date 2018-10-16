@@ -1,13 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="upload-background" style="padding-bottom: 600px">
-<div class="container">
-  <div class="heading">
-    <h1>Sharing Made Easy</h1>
-  </div>
-</div>
 
+<div class="upload-background" style="padding-bottom: 600px">
+  <div class="container">
   <h1 class="heading">My Share-able Items</h1>
 <div class="row">
   {% for item in items %}
@@ -37,5 +33,5 @@
         {{ form.as_p }}
         <button>Add Item</button>
       </form>
-
+</div>
 {% endblock content %}
